@@ -87,17 +87,17 @@
 
 <body>
   <div class="top-bar">
-    <a href="#" class="menu-link" title="Inicio">Inicio</a>
+    <a href="https://iniciop.netlify.app/" class="menu-link" title="Inicio">Inicio</a>
     <div class="submenu">
       <a href="#" class="menu-link" title="Ejercicios">Ejercicios</a>
       <div class="submenu-items">
-        <a href="https://fundamentosejemplo.netlify.app/" title="Fundamentos">Fundamentos</a>
-        <a href="URL_SUBMENU_EJERCICIO2">Ejemplo 2</a>
-        <a href="URL_SUBMENU_EJERCICIO3">Ejemplo 3</a>
-        <a href="URL_SUBMENU_EJERCICIO4">Ejemplo 4</a>
+        <a href="https://fundamentosejemplo.netlify.app/" class="menu-link" title="Fundamentos">Fundamentos</a>
+        <a href="https://ejemplodos.netlify.app/" class="menu-link" title="Ejemplo 2">Ejemplo 2</a>
+        <a href="https://ejemplotres.netlify.app/" class="menu-link" title="Ejemplo 3">Ejemplo 3</a>
+        <a href="https://ejemplocuatro.netlify.app/" class="menu-link" title="Ejemplo 4">Ejemplo 4</a>
       </div>
     </div>
-    <a href="#" class="menu-link" title="Evaluación">Evaluación</a>
+    <a href="https://evaluaciond.netlify.app/" class="menu-link" title="Evaluación">Evaluación</a>
   </div>
 
   <div class="container">
@@ -115,35 +115,28 @@
     
     <div>
       <h4>Control de flujo (if, for, switch)</h4>
-      @if(aniosServicio >= 20) {
-      <p>Tiene mucha Antigüedad</p>
-      }@else {
-      <p>No tiene mucha Antigüedad</p>
-      }
+      <div *ngIf="aniosServicio >= 20">
+        <p>Tiene mucha Antigüedad</p>
+      </div>
+      <div *ngIf="aniosServicio < 20">
+        <p>No tiene mucha Antigüedad</p>
+      </div>
 
       <h4>Listado de productos</h4>
       <table>
-        @for(producto of productos; track producto.id){
-        <tr>
+        <tr *ngFor="let producto of productos; trackBy: trackProducto">
           <td> {{ producto.id }}</td>
           <td> {{ producto.descripcion }}</td>
           <td> {{ producto.precio }}</td>
         </tr>
-        }
       </table>
 
       <h4>Número Aleatorio entre 1 y 3</h4>
-      @switch (numero) {
-      @case (1) {
-      <p>Uno</p>
-      }
-      @case (2) {
-      <p>Dos</p>
-      }
-      @case (3) {
-      <p>Tres</p>
-      }
-      }
+      <div [ngSwitch]="numero">
+        <p *ngSwitchCase="1">Uno</p>
+        <p *ngSwitchCase="2">Dos</p>
+        <p *ngSwitchCase="3">Tres</p>
+      </div>
     </div>
 
     <div>
